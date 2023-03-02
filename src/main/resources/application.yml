@@ -20,6 +20,3 @@ spring:
       hibernate.format_sql: true
       hibernate.default_batch_fetch_size: 100
 
-  #${DATASOURCE}
-  #${DB_USERNAME}
-  #${DB_PASSWORD}
