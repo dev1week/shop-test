@@ -1,0 +1,6 @@
+logging:
+  level:
+    com.example.numble.timedeal : debug
+    org.springframework.web.servlet: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.hibernate.SQL : debug
