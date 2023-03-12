@@ -33,6 +33,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	testImplementation 'junit:junit:4.13.1'
+    testImplementation 'org.projectlombok:lombok:1.18.22'
+	testImplementation 'org.projectlombok:lombok:1.18.22'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	implementation 'org.hibernate:hibernate-search:5.11.1.Final'
 
@@ -46,6 +48,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
 	//쿼리 파라미터 log 남기는 용도 => 대용량 트래픽이 들어올 경우 성능 저하될 수 있으니 런칭때는 지워야한다. 
 	//implementation "com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0"
@@ -53,6 +56,9 @@ dependencies {
 	//query dsl
 	implementation "com.querydsl:querydsl-jpa"
 	implementation "com.querydsl:querydsl-apt"
+
+	//jpa
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
 }
 
