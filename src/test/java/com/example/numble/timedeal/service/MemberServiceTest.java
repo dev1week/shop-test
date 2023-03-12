@@ -19,7 +19,8 @@ public class MemberServiceTest {
 
     @Autowired MemberService memberService;
 
-    @Autowired MemberRepository memberRepository;
+    @Autowired
+    MemberRepository memberRepository;
     @Test
     public void 회원가입() throws Exception{
         //given
@@ -30,7 +31,7 @@ public class MemberServiceTest {
         Long joinedId = memberService.join(member);
         //then
 
-        Assert.assertEquals(member, memberRepository.findByMemberId(joinedId));
+        Assert.assertEquals(member, memberRepository.findById(joinedId));
     }
 
 
@@ -46,6 +47,16 @@ public class MemberServiceTest {
 
         memberService.join(member2);
         fail("예외가 발생해야한다. ");
+    }
+
+    @Test
+    public void 회원탈퇴정상작동(){
+
+    }
+
+    @Test
+    public void 로그인(){
+
     }
 
 }
