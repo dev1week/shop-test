@@ -4,6 +4,7 @@ import com.example.numble.timedeal.domain.Category;
 import com.example.numble.timedeal.exception.NotEnoughStockException;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,7 +16,8 @@ import java.util.List;
 @DiscriminatorColumn(name = "dtype")
 @Getter
 @Setter
-public abstract class Item {
+@ToString
+public class Item {
     @Id
     @GeneratedValue
     @Column(name = "item_id")
@@ -23,8 +25,8 @@ public abstract class Item {
     private String name;
     private int price;
     private int stockQuantity;
-    @ManyToMany(mappedBy = "items")
-    private List<Category> categories = new ArrayList<Category>();
+//    @ManyToMany(mappedBy = "items")
+//    private List<Category> categories = new ArrayList<Category>();
 
     //엔티티 먼으로 비즈니스 로직을 해결할 수 있다면 엔티티 안에 넣는 것이 좋다.
 
@@ -43,6 +45,24 @@ public abstract class Item {
         if(rest<0){
             throw new NotEnoughStockException("재고 수량이 부족합니다.");
         }
+    }
+
+    protected Item() {
+    }
+
+    private Item(Long id, String name, int price, int stockQuantity) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+    }
+
+    public static Item of(Long id, String name, int price, int stockQuantity){
+        return new Item(id, name, price, stockQuantity);
+    }
+
+    public static Item of(String name, int price, int stockQuantity){
+        return Item.of(null, name, price, stockQuantity);
     }
 }
 
