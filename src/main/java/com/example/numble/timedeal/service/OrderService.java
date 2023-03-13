@@ -32,7 +32,7 @@ public class OrderService {
     @Transactional
     public Long order(Long memberId, Long itemId, int count){
         Member member = memberRepository.findByMemberId(memberId);
-        Item item = itemRepository.findByItemId(itemId);
+        Item item = itemRepository.findById(itemId).get();
 
         //orderItem 생성
         int orderPrice = item.getPrice();

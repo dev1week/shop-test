@@ -57,7 +57,6 @@ public class MemberApiController {
 
         Long id = memberService.join(member);
         return new CreateMemberResponse(id);
-
     }
 
     @PutMapping("/api/members/{id}")
