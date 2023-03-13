@@ -25,6 +25,7 @@ public class MemberApiController {
     private final MemberService memberService;
     //회원 조회
 
+
     @GetMapping("/api/members")
     public Result findMembers(){
         List<Member> members =  memberService.findMembers();
@@ -56,6 +57,7 @@ public class MemberApiController {
 
         Long id = memberService.join(member);
         return new CreateMemberResponse(id);
+
     }
 
     @PutMapping("/api/members/{id}")
