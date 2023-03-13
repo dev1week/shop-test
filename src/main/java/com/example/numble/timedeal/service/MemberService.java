@@ -14,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberService {
 
+    @Autowired
     private final MemberRepository memberRepository;
 
 
@@ -24,7 +25,7 @@ public class MemberService {
         validateDuplicateMember(member);
         memberRepository.save(member);
 
-        return member.getId();
+        return member.getMemberId();
     }
 
     private void validateDuplicateMember(Member member) {
@@ -40,10 +41,14 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-    public Member findOne(Long memberId){
+    public Member findByMemberId(Long memberId){
         return memberRepository.findByMemberId(memberId);
     }
 
-
+    @Transactional
+    public void update(Long id, String name) {
+        Member member = memberRepository.findByMemberId(id);
+        member.setName(name);
+    }
 
 }

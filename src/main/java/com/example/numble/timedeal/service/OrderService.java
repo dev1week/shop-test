@@ -4,10 +4,10 @@ import com.example.numble.timedeal.domain.Member;
 import com.example.numble.timedeal.domain.Order;
 import com.example.numble.timedeal.domain.OrderItem;
 import com.example.numble.timedeal.domain.item.Item;
-import com.example.numble.timedeal.repository.OrderSearch;
-import com.example.numble.timedeal.repository.ItemRepository;
 import com.example.numble.timedeal.repository.MemberRepository;
 import com.example.numble.timedeal.repository.OrderRepository;
+import com.example.numble.timedeal.repository.OrderSearch;
+import com.example.numble.timedeal.repository.ItemRepository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -44,7 +44,7 @@ public class OrderService {
         //주문 저장
         orderRepository.save(order);
 
-        return order.getId();
+        return order.getOrderId();
     }
 
 
@@ -57,11 +57,11 @@ public class OrderService {
         order.cancel();
     }
 
-
-    //검색
-    public List<Order> findOrders(OrderSearch orderSearch){
-        return orderRepository.findAll(orderSearch);
-    }
+//
+//    검색
+//    public List<Order> findOrders(OrderSearch orderSearch){
+//        return orderRepository.findAll(orderSearch);
+//    }
 
 
 
