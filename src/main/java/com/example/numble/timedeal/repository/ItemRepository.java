@@ -1,35 +1,9 @@
 package com.example.numble.timedeal.repository;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
 import com.example.numble.timedeal.domain.item.Item;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
-@Repository
-@RequiredArgsConstructor
-public class ItemRepository {
-
-    private final EntityManager em;
-
-
-    public void save(Item item){
-        if(item.getId()==null){
-            em.persist(item);
-        }else{
-            em.merge(item);
-        }
-    }
-
-    public Item findByItemId(Long id){
-        return em.find(Item.class, id);
-    }
-
-    public List<Item> findAll(){
-        return em.createQuery("select i from Item i", Item.class)
-                .getResultList();
-    }
+public interface ItemRepository extends JpaRepository<Item, Long>{
 
 }
